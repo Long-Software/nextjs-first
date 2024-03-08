@@ -3,7 +3,7 @@ const links = [
   { href: '/about', label: 'About' },
   { href: '/drinks', label: 'Drink' },
   { href: '/tasks', label: 'Tasks' },
-  { href: '/query', label: 'Query' }
+  { href: '/prisma-example', label: 'Prisma' }
 ]
 const Navbar = () => {
   return (

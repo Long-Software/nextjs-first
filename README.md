@@ -462,9 +462,7 @@ const DrinksList = ({ drinks }) => {
     <ul className='menu menu-vertical pl-0'>
       {drinks.map(drink => (
         <li key={drink.idDrink}>
-          <Link
-            href={`/drinks/${drink.idDrink}`}
-            className='text-xl font-medium'>
+          <Link href={`/drinks/${drink.idDrink}`} className='text-xl font-medium'>
             {drink.strDrink}
           </Link>
         </li>
@@ -660,9 +658,7 @@ const DrinksList = ({ drinks }) => {
     <ul className='grid sm:grid-cols-2 gap-6 mt-6'>
       {drinks.map(drink => (
         <li key={drink.idDrink}>
-          <Link
-            href={`/drinks/${drink.idDrink}`}
-            className='text-xl font-medium'>
+          <Link href={`/drinks/${drink.idDrink}`} className='text-xl font-medium'>
             <div className='relative h-48 mb-4'>
               <Image
                 src={drink.strDrinkThumb}
@@ -986,10 +982,7 @@ const TaskList = async () => {
         <li
           key={task.id}
           className='flex justify-between items-center px-6 py-4 mb-4 border border-base-300 rounded-lg shadow-lg'>
-          <h2
-            className={`text-lg capitalize ${
-              task.completed ? 'line-through' : null
-            }`}>
+          <h2 className={`text-lg capitalize ${task.completed ? 'line-through' : null}`}>
             {task.content}
           </h2>
           <div className='flex gap-6 items-center'>
@@ -1301,10 +1294,7 @@ const SubmitButton = () => {
   const { pending } = useFormStatus()
 
   return (
-    <button
-      type='submit'
-      className='btn join-item btn-primary'
-      disabled={pending}>
+    <button type='submit' className='btn join-item btn-primary' disabled={pending}>
       {pending ? 'please wait... ' : 'create task'}
     </button>
   )
@@ -1361,10 +1351,7 @@ const SubmitButton = () => {
   const { pending } = useFormStatus()
 
   return (
-    <button
-      type='submit'
-      className='btn join-item btn-primary'
-      disabled={pending}>
+    <button type='submit' className='btn join-item btn-primary' disabled={pending}>
       {pending ? 'please wait... ' : 'create task'}
     </button>
   )
@@ -1536,10 +1523,7 @@ import toast from 'react-hot-toast'
 const SubmitBtn = () => {
   const { pending } = useFormStatus()
   return (
-    <button
-      type='submit'
-      className='btn btn-primary join-item'
-      disabled={pending}>
+    <button type='submit' className='btn btn-primary join-item' disabled={pending}>
       {pending ? 'please wait...' : 'create task'}
     </button>
   )

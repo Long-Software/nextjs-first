@@ -1,7 +1,13 @@
-import React from 'react'
+import TaskForm from '@/components/TaskForm'
+import TaskList from '@/components/TaskList'
 
 const Task = () => {
-  return <div>Task</div>
+  return (
+    <div className='max-w-lg'>
+      <TaskForm />
+      <TaskList />
+    </div>
+  )
 }
 
 export default Task
