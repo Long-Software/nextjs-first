@@ -10,9 +10,9 @@ export const createTask = async data => {
   const Task = z.object({ content: z.string().min(5) })
   try {
     Task.parse(data)
-    await prisma.task.create({ data })
+    const task = await prisma.task.create({ data })
     revalidatePath('/tasks')
-    return { message: 'success' }
+    return { message: 'success', data: task }
   } catch (error) {
     return { message: 'error' }
   }
