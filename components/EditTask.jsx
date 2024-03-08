@@ -1,6 +1,7 @@
 import { updateTask } from '@/Models/Tasks'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
+import SubmitBtn from './SubmitBtn'
 
 const handleSubmit = async formData => {
   'use server'
@@ -39,7 +40,7 @@ const EditTask = ({ task }) => {
             className='checkbox checkbox-primary checkbox-sm'
           />
         </label>
-        <button type='submit'>Submit</button>
+        <SubmitBtn>Submit</SubmitBtn>
       </div>
     </form>
   )

@@ -1,18 +1,17 @@
+'use client'
 import { deleteTask } from '@/Models/Tasks'
-import { revalidatePath } from 'next/cache'
+import { useFormStatus } from 'react-dom'
+import SubmitBtn from './SubmitBtn'
 
 const handleSubmit = async formData => {
-  'use server'
-  await deleteTask({
-    where: { id: formData.get('id') }
-  })
-  revalidatePath('/tasks')
+  return await deleteTask({ where: { id: formData.get('id') } })
 }
+
 const DeleteForm = ({ id }) => {
   return (
     <form action={handleSubmit}>
       <input type='hidden' className='hidden' name='id' value={id} />
-      <button className='btn btn-xs btn-error'>Delete</button>
+      <SubmitBtn>Delete</SubmitBtn>
     </form>
   )
 }

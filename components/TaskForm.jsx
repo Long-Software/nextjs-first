@@ -1,15 +1,23 @@
+'use client'
 import { createTask } from '@/Models/Tasks'
-import { revalidatePath } from 'next/cache'
+import { useEffect } from 'react'
+import { useFormStatus, useFormState } from 'react-dom'
+import toast from 'react-hot-toast'
+import SubmitBtn from './SubmitBtn'
 
-const handleSubmit = async formData => {
-  'use server'
-  await createTask({ content: formData.get('content') })
-  revalidatePath('/tasks')
+const handleSubmit = async (prevState, formData) => {
+  return await createTask({ content: formData.get('content') })
 }
-const handleSubmitCustom = async formData => {}
-const TaskForm = async () => {
+
+const TaskForm = () => {
+  const [state, formAction] = useFormState(handleSubmit, { message: null })
+  useEffect(() => {
+    state.message == 'success' && toast.success('task created')
+    state.message == 'error' && toast.error('there was an error')
+  }, [state])
   return (
-    <form action={handleSubmit}>
+    <form action={formAction}>
+      {state?.message && <p className='mb-2'>{state.message}</p>}
       <div className='join w-full'>
         <input
           type='text'
@@ -18,10 +26,8 @@ const TaskForm = async () => {
           required
           className='input input-bordered join-item w-full'
         />
-        <button type='submit' className='btn btn-primary'>
-          Create Task
-        </button>
-        <button type='reset' className='btn btn-error'>
+        <SubmitBtn>Create Task</SubmitBtn>
+        <button type='reset' className='btn btn-error join-item'>
           Clear
         </button>
       </div>
