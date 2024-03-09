@@ -1,7 +1,7 @@
 import { createTask, getTasks } from '@/Models/Tasks'
 
 const prismaHandlers = async () => {
-  await createTask({ content: 'First Content' })
+  // await createTask({ content: 'First Content' })
 
   const tasks = await getTasks({ orderBy: { createdAt: 'desc' } })
   return tasks
